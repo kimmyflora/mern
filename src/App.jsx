@@ -25,7 +25,7 @@ function App() {
       <Route path="/" element={<FeedPage />} />
       <Route path="/login" element={<LoginPage handleSignUpOrLogin={handleSignUpOrLogin}/>} />
       <Route path='/signup' element={<SignUpPage handleSignUpOrLogin={handleSignUpOrLogin}/>} />
-      <Route path="/restaurant" element={<RestaurantPage/>} />
+     <Route path="/restaurant" element={<RestaurantPage/>} />
  
     </Routes>
   );
