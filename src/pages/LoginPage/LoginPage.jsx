@@ -55,7 +55,7 @@ export default function LoginPage({ handleSignUpOrLogin }) {
     <Grid textAlign="center" style={{ height: "100vh" }} verticalAlign="middle">
       <Grid.Column style={{ maxWidth: 450 }}>
         <Header as="h2" color="purple" textAlign="center">
-          <Image src="https://i.imgur.com/TM4eA5g.jpg" /> Login
+          <Image src="https://static.vecteezy.com/system/resources/thumbnails/021/919/677/small/login-icon-in-trendy-flat-style-isolated-on-white-background-approach-symbol-for-your-web-site-design-logo-app-ui-illustration-eps10-flat-style-for-graphic-design-vector.jpg" /> Login
         </Header>
         <Form autoComplete="off" onSubmit={handleSubmit}>
           <Segment stacked>

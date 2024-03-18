@@ -2,19 +2,19 @@ import { useState } from "react";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 
 import {
-	Button,
-	Form,
-	Grid,
-	Header,
-	Image,
-	Segment,
-  } from "semantic-ui-react";
+  Button,
+  Form,
+  Grid,
+  Header,
+  Image,
+  Segment,
+} from "semantic-ui-react";
 
 // this hook allows us to navigate programatically
 import { useNavigate } from 'react-router-dom'
 import userService from "../../utils/userService";
 
-export default function SignUpPage({handleSignUpOrLogin}) {
+export default function SignUpPage({ handleSignUpOrLogin }) {
 
   const [error, setError] = useState('')
 
@@ -38,7 +38,7 @@ export default function SignUpPage({handleSignUpOrLogin}) {
     });
   }
 
-  async function handleSubmit(e){
+  async function handleSubmit(e) {
     e.preventDefault();
 
     // ===========================================
@@ -66,8 +66,8 @@ export default function SignUpPage({handleSignUpOrLogin}) {
 
 
     try {
-    // 2. Remove the headers on the fetch request (the browser) (in utils/signup)
-    // will automatically apply the correct multipart/formdata header
+      // 2. Remove the headers on the fetch request (the browser) (in utils/signup)
+      // will automatically apply the correct multipart/formdata header
       await userService.signup(formData); // userService is imported at top of file
       handleSignUpOrLogin();// this is destructred in the props
       // and it grabs the token from localstorage and sets the 
@@ -76,20 +76,18 @@ export default function SignUpPage({handleSignUpOrLogin}) {
       // Change the view to the home page!
       navigate('/');// navigate acceps a path defined by a route!
 
-    } catch(err){
+    } catch (err) {
       console.log(err.message, " <- this comes from tht throw in utils/signup")
       setError('Check Your Terminal for errors!!!!!!!!!')
     }
 
 
-
-
-     // ===========================================
+    // ===========================================
   }
 
-  function handleFileInput(e){
-	console.log(e.target.files)
-	setPhoto(e.target.files[0])
+  function handleFileInput(e) {
+    console.log(e.target.files)
+    setPhoto(e.target.files[0])
   }
 
 
@@ -97,7 +95,7 @@ export default function SignUpPage({handleSignUpOrLogin}) {
     <Grid textAlign="center" style={{ height: "100vh" }} verticalAlign="middle">
       <Grid.Column style={{ maxWidth: 450 }}>
         <Header as="h2" color="purple" textAlign="center">
-          <Image src="https://i.imgur.com/TM4eA5g.jpg" /> Sign Up
+          <Image src="https://cdn-icons-png.flaticon.com/512/5721/5721113.png" /> Sign Up
         </Header>
         <Form autoComplete="off" onSubmit={handleSubmit}>
           <Segment stacked>
@@ -133,12 +131,28 @@ export default function SignUpPage({handleSignUpOrLogin}) {
               required
             />
             <Form.TextArea
-              label="bio"
+              label="About Your Business"
               name="bio"
               value={state.bio}
-              placeholder="Tell us more about your dogs..."
+              placeholder="Tell us more about your small business..."
               onChange={handleChange}
             />
+            <div className="ui form">
+              <div className="field">
+                <label>Select Business Type</label>
+                <select
+                  name="businessType"
+                  value={state.businessType}
+                  onChange={handleChange}
+                  required
+                >
+                  <option value="">Select...</option>
+                  <option value="Restaurants">Restaurants</option>
+                  <option value="Services">Services</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+            </div>
             <Form.Field>
               <Form.Input
                 type="file"
