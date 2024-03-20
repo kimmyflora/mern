@@ -9,6 +9,7 @@ import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import RestaurantPage from "./pages/RestaurantPage/RestaurantPage";
 import ServicePage from "./pages/ServicePage/ServicePage";
 import OtherPage from "./pages/OtherPage/OtherPage";
+import CommentPage from "./pages/CommentPage/CommentPage";
 
 // ANY component that is rendered by a route, should be stored in the 
 // pages folder. Every page is like an app component
@@ -58,6 +59,7 @@ function App() {
         <Route path="/restaurant" element={<RestaurantPage loggedUser={user} handleLogout={logout}/>} />
         <Route path="/service" element={<ServicePage loggedUser={user} handleLogout={logout}/>} />
         <Route path="/other" element={<OtherPage loggedUser={user} handleLogout={logout}/>} />
+        <Route path="/comments" element={<CommentPage loggedUser={user} handleLogout={logout}/>} />
       </Routes>
 
     </>

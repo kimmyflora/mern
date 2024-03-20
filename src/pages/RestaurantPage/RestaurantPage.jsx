@@ -1,16 +1,16 @@
-import AddPostForm from "../../components/AddPostForm/AddPostForm"
-import Header from "../../components/Header/Header";
 import { useState, useEffect } from 'react'
-import { Grid } from "semantic-ui-react";
 import PostFeed from "../../components/PostFeed/PostFeed";
+import Header from "../../components/Header/Header";
+import AddPostForm from "../../components/AddPostForm/AddPostForm"
+import { Grid } from "semantic-ui-react";
 import tokenService from '../../utils/tokenService';
 
 
 
 export default function RestaurantPage({ loggedUser, handleLogout }) {
-    const [loading, setLoading] = useState(true)
-    const [posts, setPosts] = useState([]);
 
+    const [posts, setPosts] = useState([]);
+    const [loading, setLoading] = useState(true)
     async function handleAddPost(postToSendToServer) {
         console.log(postToSendToServer, " formData from addPost form")
 
@@ -80,25 +80,25 @@ export default function RestaurantPage({ loggedUser, handleLogout }) {
 
     return (
         <div>
-            <h1>List of all Small Owned Restaurants</h1>
-        
+            <h2>List of all Small Owned Restaurants</h2>
+
             <Grid centered>
-            <Grid.Row>
-               <Grid.Column>
-                  <Header loggedUser={loggedUser} handleLogout={handleLogout} />
-               </Grid.Column>
-            </Grid.Row>
-            <Grid.Row>
-               <Grid.Column style={{ maxWidth: 450 }}>
-                  <AddPostForm handleAddPost={handleAddPost} />
-               </Grid.Column>
-            </Grid.Row>
-            <Grid.Row>
-               <Grid.Column style={{ maxWidth: 450 }}>
-                  {loading ? <h1>Loading.....</h1> : <PostFeed posts={posts} itemsPerRow={1} isProfile={false} loggedUser={loggedUser} />}
-               </Grid.Column>
-            </Grid.Row>
-         </Grid>
+                <Grid.Row>
+                    <Grid.Column>
+                        <Header loggedUser={loggedUser} handleLogout={handleLogout} />
+                    </Grid.Column>
+                </Grid.Row>
+                <Grid.Row>
+                    <Grid.Column style={{ maxWidth: 450 }}>
+                        <AddPostForm handleAddPost={handleAddPost} />
+                    </Grid.Column>
+                </Grid.Row>
+                <Grid.Row>
+                    <Grid.Column style={{ maxWidth: 450 }}>
+                        {loading ? <h1>Loading.....</h1> : <PostFeed posts={posts} itemsPerRow={1} isProfile={false} loggedUser={loggedUser} />}
+                    </Grid.Column>
+                </Grid.Row>
+            </Grid>
 
         </div>
 
