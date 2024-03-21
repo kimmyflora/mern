@@ -20,6 +20,7 @@ const BUCKET_NAME = process.env.S3_BUCKET
 async function deletePost(req,res) {
   try{
     const postDoc = await PostModel.deleteOne({'_id': req.params.id})
+    console.log(postDoc, "postttDOCc")
     res.json({data: 'deleted the post'})
   } catch(err) {
     res.send(err)

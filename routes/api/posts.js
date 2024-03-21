@@ -14,7 +14,7 @@ router.post('/', upload.single('photo'), postsCtrl.create);
 // /api/posts the index functions job is to return all of the posts
 router.get('/', postsCtrl.index)
 
-router.delete('/:postId', postsCtrl.delete)
+router.delete('/:id', postsCtrl.delete)
 
 
 /*---------- Protected Routes ----------*/

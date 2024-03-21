@@ -7,8 +7,7 @@ import CommentForm from "../../CommentForm/CommentForm";
 
 export default function PostCard({ post, isProfile, deletePost, }) {
    const clickHandler = () => deletePost(post._id)
-   
-  console.log(post, "post ")
+  
 
  
  
