@@ -1,6 +1,6 @@
 import { Card, Icon, Image } from "semantic-ui-react";
 import { Link } from "react-router-dom";
-import CommentForm from "../../CommentForm/CommentForm";
+
 
 
 
@@ -15,7 +15,7 @@ export default function PostCard({ post, isProfile, deletePost, }) {
   return (
 
     <Card>
-      {isProfile ? null : (
+      {isProfile && (
         <Card.Content textAlign="left">
           <Link to={`/${post.user.username}`}>
             <Image
@@ -48,8 +48,11 @@ export default function PostCard({ post, isProfile, deletePost, }) {
         <Card.Description>{post.businessType}</Card.Description>
       </Card.Content>
       
-      <Icon name={"trash alternate"} size="large" color="red" onClick={clickHandler} />
-     <CommentForm />
+      {isProfile && (
+        <Card.Content extra textAlign={"left"} >
+          <Icon name={"trash alternate"} size="large" color="red" onClick={clickHandler} />
+        </Card.Content>
+      )}
     </Card>
       
   
