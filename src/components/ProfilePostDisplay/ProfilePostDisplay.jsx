@@ -4,7 +4,6 @@ import PostCard from '../PostCard/PostCard';
 
 export default function ProfilePostDisplay({isProfile, posts, itemsPerRow}){
 
-   
     const postCards = posts.map((post) => {
         return (<PostCard key={post._id} post={post} isProfile={isProfile}/>)
     })

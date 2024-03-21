@@ -69,12 +69,62 @@ export default function RestaurantPage({ loggedUser, handleLogout }) {
         }
     }
 
-    useEffect(() => {
+
+// function for adding commnent 
+    async function addComment(postId) {
+        try {
+            const response = await fetch(`/api/posts/${postId}/comments`, {
+              method: 'POST',
+              headers: {
+                // convention for sending jwts in a fetch request
+                Authorization: "Bearer " + tokenService.getToken(),
+                // We send the token, so the server knows who is making the
+                // request
+              }
+            })
+      
+            const data = await response.json();
+            console.log(data, ' response from addComment')
+            getPosts(); // Refetch the posts, which updates the state, 
+            // the post will now have the user in inside of the 
+            // post.likes array
+          } catch(err){
+            console.log(err)
+          }
+    }
+    
+    //function for deleting comment 
+    async function removeComment(likeId){
+        try {
+          const response = await fetch(`/api/comments/${CommentId}`, {
+            method: 'DELETE',
+            headers: {
+              // convention for sending jwts in a fetch request
+              Authorization: "Bearer " + tokenService.getToken(),
+              // We send the token, so the server knows who is making the
+              // request
+            } 
+          })
+    
+          const data = await response.json()
+          console.log(data, ' response from delete comment')
+          getPosts(); // call getPosts to sync you data and update state
+          // so the like is removed from the array 
+        } catch(err){
+          console.log(err)
+        }
+      }
+
+
+
+
+      useEffect(() => {
         // This useEffect is called when the page loads
 
         // Don't forget to call the function
         getPosts();
     }, []);
+
 
 
 

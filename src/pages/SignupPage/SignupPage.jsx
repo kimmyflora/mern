@@ -137,22 +137,7 @@ export default function SignUpPage({ handleSignUpOrLogin }) {
               placeholder="Tell us more about your small business..."
               onChange={handleChange}
             />
-            <div className="ui form">
-              <div className="field">
-                <label>Select Business Type</label>
-                <select
-                  name="businessType"
-                  value={state.businessType}
-                  onChange={handleChange}
-                  required
-                >
-                  <option value="">Select...</option>
-                  <option value="Restaurants">Restaurants</option>
-                  <option value="Services">Services</option>
-                  <option value="Other">Other</option>
-                </select>
-              </div>
-            </div>
+            
             <Form.Field>
               <Form.Input
                 type="file"

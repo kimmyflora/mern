@@ -3,11 +3,17 @@ const Schema = mongoose.Schema;
 
 
 
-const commentsSchema = new Schema({
+const commentSchema = new Schema({
   content:{
     type: String,
     required: true
-  }
+  },
+
+  user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+  photoUrl: String,
+
+  
+
 })
 
 // One a user has many posts 
@@ -16,8 +22,11 @@ const postSchema = new mongoose.Schema({
   user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
   photoUrl: String,
   caption: String,
-  businessType: String,
-  comments:[commentsSchema]
+  businessType: {
+    type: String,
+    enum: ['Restaurants', 'Services', 'Other']
+  },
+  comments:[commentSchema]
  
 });
 

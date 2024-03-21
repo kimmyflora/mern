@@ -5,7 +5,8 @@ import { Button, Form, Segment, } from 'semantic-ui-react'
 export default function AddPostForm({ handleAddPost }) {
 
   const [state, setState] = useState({
-    caption: ''
+    caption: '',
+    businessType: ''
   })
 
   const [photo, setPhoto] = useState({})
@@ -14,25 +15,31 @@ export default function AddPostForm({ handleAddPost }) {
     setPhoto(e.target.files[0])
   }
 
-  function handleChange(e) {
-    setState({
-      ...state,
-      [e.target.name]: e.target.value
-    })
+  function handleChange(e, target) {
+    console.log(target, 'logggg')
+    const val = target ? target.value : e.target.value
+    const name = target ? target.name : e.target.name
+        setState({
+          ...state,
+          [name]: val
+        })
   }
+
+
 
   function handleSubmit(e) {
     e.preventDefault()
     const formData = new FormData()
     formData.append('caption', state.caption)
     formData.append('photo', photo)
+    formData.append('businessType', state.businessType)
     handleAddPost(formData)
   }
 
   const options = [
     { text: 'Restaurants', value: 'Restaurants' },
     { text: 'Services', value: 'Services' },
-    { text: 'Other', value: 'Other' }
+    { text: 'Other', value: 'Other'} 
   ];
  
 
@@ -56,19 +63,14 @@ export default function AddPostForm({ handleAddPost }) {
         />
 
       <Form.Dropdown
-       className="form-control" 
+       className="form-control"
+       name='businessType' 
        options={options}
-       value={state.businessType}
+     
        placeholder='Select Type'
-       onChange={handleFileInput}
+       onChange={handleChange}
        required
-      
-
-
       />
-
-      
-
 
         <Button type="submit" className="btn">
           ADD POST

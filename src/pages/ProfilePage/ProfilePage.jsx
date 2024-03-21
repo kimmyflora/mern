@@ -1,10 +1,14 @@
-import ProfileBio from "../../components/ProfileBio/ProfileBio";
 import React, { useState, useEffect } from "react";
-import { Grid } from "semantic-ui-react";
-import ProfilePostDisplay from "../../components/ProfilePostDisplay/ProfilePostDisplay";
-import Header from "../../components/Header/Header";
 
 import { useParams } from "react-router-dom";
+
+import { Grid } from "semantic-ui-react";
+import ProfileBio from "../../components/ProfileBio/ProfileBio";
+
+import Header from "../../components/Header/Header";
+
+import tokenService from "../../utils/tokenService";
+import PostFeed from "../../components/PostFeed/PostFeed";
 
 export default function ProfilePage({ loggedUser, handleLogout }){
   const [posts, setPosts] = useState([]);
@@ -49,6 +53,32 @@ export default function ProfilePage({ loggedUser, handleLogout }){
     }
   }
 
+  async function deletePost(postId){
+    console.log(postId, "THIS IS THE LOG BEFORE THE TRY IN THE DELETE Post FUNCTION")
+    try {
+      const response = await fetch(`/api/posts/${postId}`, {
+        method: 'DELETE',
+        headers: {
+          // convention for sending jwts in a fetch request
+          Authorization: "Bearer " + tokenService.getToken(),
+          // We send the token, so the server knows who is making the
+          // request
+        } 
+      })
+
+      const data = await response.json()
+      console.log(data, ' response from delete post')
+      getProfileInfo(); // call getPosts to sync you data and update state
+      // so the like is removed from the array 
+    } catch(err){
+      console.log(err)
+    }
+  }
+
+
+
+
+
   if (error) {
     return (
       <>
@@ -82,7 +112,7 @@ export default function ProfilePage({ loggedUser, handleLogout }){
     </Grid.Row>
     <Grid.Row centered>
       <Grid.Column style={{ maxWidth: 750 }}>
-       <PostFeed itemsPerRow={3} isProfile={true} posts={posts} loggedUser={loggedUser}/> 
+      <PostFeed  deletePost={deletePost} loggedUser={loggedUser} posts={posts} isProfile={true} itemsPerRow={3} />
       
       </Grid.Column>
     </Grid.Row>
