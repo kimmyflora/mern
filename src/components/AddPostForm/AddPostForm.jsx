@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Button, Form, Segment, } from 'semantic-ui-react'
+import "./AddPostForm.css";
 
 
 export default function AddPostForm({ handleAddPost }) {

@@ -17,6 +17,35 @@ export default function PostFeed({posts, itemsPerRow, isProfile, loggedUser, bus
 			
 		});
 	
+		async function AddComment(postId){ // postId comes from the card component
+			// where we call this function
+			try {
+			  const response = await fetch(`/api/posts/${postId}/comments`, {
+				method: 'POST',
+				headers: {
+				  // convention for sending jwts in a fetch request
+				  Authorization: "Bearer " + tokenService.getToken(),
+				  // We send the token, so the server knows who is making the
+				  // request
+				}
+			  })
+		
+			  const data = await response.json();
+			  console.log(data, ' response from addComment')
+			  getPosts(); // Refetch the posts, which updates the state, 
+			  // the post will now have the user in inside of the 
+			  // post.likes array
+			} catch(err){
+			  console.log(err)
+			}
+		  }
+
+
+
+
+
+
+
 		return (
 			<Card.Group itemsPerRow={itemsPerRow}>
 				{postCards}

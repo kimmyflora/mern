@@ -9,8 +9,9 @@ const commentSchema = new Schema({
     required: true
   },
 
-  user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
-  photoUrl: String,
+  username: String,
+  
+  
 
   
 

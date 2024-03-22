@@ -4,17 +4,18 @@ import { Link } from "react-router-dom";
 export default function PageHeader({ loggedUser, handleLogout }) {
     console.log(handleLogout)
   return (
-    <Segment clearing>
+    <Segment clearing style={{ backgroundColor: "white", border: "none" }}>
       <Header as="h2" floated="right">
         <Link to="/">
           <Icon name="home"></Icon>
         </Link>
+        
         <Link to="" onClick={handleLogout}>
           Logout
         </Link>
       </Header>
       <Header as="h2" floated="left">
-        <Link to={`/${loggedUser.username}`}>
+        <Link to={`/${loggedUser.username}`} >
           <Image
             src={
                 loggedUser.photoUrl
