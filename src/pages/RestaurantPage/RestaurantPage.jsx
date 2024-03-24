@@ -126,7 +126,10 @@ export default function RestaurantPage({ loggedUser, handleLogout }) {
                 </Grid.Row>
                 <Grid.Row>
                     <Grid.Column style={{ maxWidth: 450 }}>
-                        {loading ? <h1>Loading.....</h1> : <PostFeed posts={posts} itemsPerRow={1} isProfile={false} loggedUser={loggedUser} />}
+                        {loading ? <h1>Loading.....</h1> : 
+                        <PostFeed  posts={posts.filter(post => post.businessType === 'Restaurants')} // Filter posts based on business type
+                       
+                     itemsPerRow={1} isProfile={false} loggedUser={loggedUser} />}
                     </Grid.Column>
 
                 </Grid.Row>
