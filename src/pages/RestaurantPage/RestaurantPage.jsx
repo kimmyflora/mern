@@ -4,6 +4,7 @@ import Header from "../../components/Header/Header";
 import AddPostForm from "../../components/AddPostForm/AddPostForm"
 import { Grid } from "semantic-ui-react";
 import tokenService from '../../utils/tokenService';
+import ProfileBio from '../../components/ProfileBio/ProfileBio';
 
 
 
@@ -12,6 +13,7 @@ export default function RestaurantPage({ loggedUser, handleLogout }) {
 
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(true)
+   
     async function handleAddPost(postToSendToServer) {
         console.log(postToSendToServer, " formData from addPost form")
 
@@ -126,16 +128,23 @@ export default function RestaurantPage({ loggedUser, handleLogout }) {
                 </Grid.Row>
                 <Grid.Row>
                     <Grid.Column style={{ maxWidth: 450 }}>
-                        {loading ? <h1>Loading.....</h1> : 
-                        <PostFeed  posts={posts.filter(post => post.businessType === 'Restaurants')} // Filter posts based on business type
-                       
-                     itemsPerRow={1} isProfile={false} loggedUser={loggedUser} />}
+                        {loading ? <h1>Loading.....</h1> :
+                            <PostFeed posts={posts.filter(post => post.businessType === 'Restaurants')} // Filter posts based on business type
+                                itemsPerRow={1}
+                                 isProfile={false} 
+                                 loggedUser={loggedUser} />}
+                                
                     </Grid.Column>
-
                 </Grid.Row>
 
+                <Grid.Row>
+        <Grid.Column style={{ maxWidth: 450 }}>
+    
+        </Grid.Column>
+    </Grid.Row>
+                
             </Grid>
-            
+
         </div>
 
     )

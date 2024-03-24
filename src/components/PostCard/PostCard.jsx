@@ -3,14 +3,8 @@ import { Link } from "react-router-dom";
 
 
 
-
-
-
 export default function PostCard({ post, isProfile, deletePost, }) {
   const clickHandler = () => deletePost(post._id)
-
-
-
 
 
   return (
