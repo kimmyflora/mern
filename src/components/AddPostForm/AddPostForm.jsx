@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Button, Form, Segment, } from 'semantic-ui-react'
-import "./AddPostForm.css";
+
 
 
 export default function AddPostForm({ handleAddPost }) {
@@ -20,10 +20,10 @@ export default function AddPostForm({ handleAddPost }) {
     console.log(target, 'logggg')
     const val = target ? target.value : e.target.value
     const name = target ? target.name : e.target.name
-        setState({
-          ...state,
-          [name]: val
-        })
+    setState({
+      ...state,
+      [name]: val
+    })
   }
 
 
@@ -40,9 +40,9 @@ export default function AddPostForm({ handleAddPost }) {
   const options = [
     { text: 'Restaurants', value: 'Restaurants' },
     { text: 'Services', value: 'Services' },
-    { text: 'Other', value: 'Other'} 
+    { text: 'Other', value: 'Other' }
   ];
- 
+
 
   return (
     <Segment>
@@ -55,23 +55,24 @@ export default function AddPostForm({ handleAddPost }) {
           onChange={handleChange}
           required
         />
-        <Form.Input
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <Form.Input
+            className="form-control"
+            type="file"
+            name="photo"
+            placeholder="upload image"
+            onChange={handleFileInput}
+          />
+        </div>
+        <Form.Dropdown
           className="form-control"
-          type="file"
-          name="photo"
-          placeholder="upload image"
-          onChange={handleFileInput}
-        />
+          name='businessType'
+          options={options}
 
-      <Form.Dropdown
-       className="form-control"
-       name='businessType' 
-       options={options}
-     
-       placeholder='Select Type'
-       onChange={handleChange}
-       required
-      />
+          placeholder='Select Type'
+          onChange={handleChange}
+          required
+        />
 
         <Button type="submit" className="btn">
           ADD POST

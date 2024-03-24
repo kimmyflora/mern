@@ -16,12 +16,27 @@ export default function CommentForm({ handleAddPost }) {
     })
   }
 
-  function handleSubmit(e) {
-    e.preventDefault()
-    const formData = new FormData()
-    formData.append('caption', state.caption)
-    handleAddPost(formData)
-  }
+  //async function handle submit try and catch post request to back end 
+  async function handleSubmit(e){
+    e.preventDefault();
+    try {
+      const response = await fetch(`/api/posts/${post._id}/comments`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: "Bearer " + tokenService.getToken(),
+        },
+        body: JSON.stringify({ text }),
+      });
+      if (!response.ok) {
+        throw new Error('Failed to add comment');
+      }
+      // Reset form fields after successful submission
+      setText('');
+    } catch (error) {
+      console.error('Error adding comment:', error);
+    }
+  };
 
 
   return (
