@@ -1,5 +1,3 @@
-
-
 import "./FeedPage.css";
 
 
@@ -9,7 +7,7 @@ export default function FeedPage() {
    return (
 
 
-      <h1>Click on the categories you wish to view more of!
+      <h1>Feast Your Eyes on Endless Options! Which Tantalizing Category Beckons You? Restaurants, Services, or Other?
          <br />
          <ul>
             <li> <a href="restaurant">Restaurants</a>

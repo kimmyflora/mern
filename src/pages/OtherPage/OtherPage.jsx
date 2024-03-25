@@ -83,7 +83,7 @@ export default function OtherPage({ loggedUser, handleLogout }) {
     return (
         <div>
 
-            <h1> List of Other Small Businesses  </h1>
+            <h1> Uncover Local Treasures: A Handpicked Selection of Unique Small Businesses. </h1>
          
             <Grid centered>
                 <Grid.Row>

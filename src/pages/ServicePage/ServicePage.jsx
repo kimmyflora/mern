@@ -82,7 +82,7 @@ export default function ServicePage({ loggedUser, handleLogout }) {
 
     return (
         <div>
-            <h2>List of all Small Owned Services</h2>
+            <h2>Unlock a World of Exceptional Service: A Carefully Curated Guide to Small, Community-Driven Businesses.</h2>
 
             <Grid centered>
                 <Grid.Row>

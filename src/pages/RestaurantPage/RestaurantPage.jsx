@@ -113,7 +113,7 @@ export default function RestaurantPage({ loggedUser, handleLogout }) {
 
     return (
         <div>
-            <h2>List of all Small Owned Restaurants</h2>
+            <h2>Discover Hidden Culinary Gems: A Curated Collection of Locally-Owned Restaurants.</h2>
 
             <Grid centered>
                 <Grid.Row>
